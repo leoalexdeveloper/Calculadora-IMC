@@ -2,8 +2,36 @@ var inputs = document.querySelectorAll('input');
 var resultado = document.querySelector('.resultado');
 resultado.innerHTML="Veja seu resultado aqui!";
 var peso, altura;
-var button = document.querySelector('button')
-button.addEventListener("click", preventSubmit);
+var button = document.querySelector('button');
+/* ==================format number at input=========================== */
+for(let i = 0; i < inputs.length; i++){
+    inputs[i].addEventListener("input", function(e){
+        if (inputs[i].value.length > 6)
+        {
+            inputs[i].value = inputs[i].value.substr(0, 6);
+        };
+
+        if(!inputs[i].value.match(/\d{1}\.\d{*}/) 
+            && 
+            inputs[i].value[inputs[i].value.length-1].match(/\d/))
+        {
+            let strSplit = inputs[i].value.replace(".", "").split("");
+            strSplit.splice(-2, 0, ".");
+            let joined = strSplit.join("");
+            console.log(joined);
+            inputs[i].value = joined;
+        }else{
+            inputs[i].value = inputs[i].value.substr(0, inputs[i].value.length-1);
+        }
+    });
+    
+    inputs[i].addEventListener("keyup", function(){
+        if(inputs[i].value == "."){
+            inputs[i].value = '';
+        }
+    });
+}
+
 function getInputValues(inputs){
     peso = inputs[0].value || "0";
     altura = inputs[1].value || "0.0";
@@ -14,7 +42,8 @@ function validateData(){
 }
 
 function calculaImc(peso, altura){
-    var imc =  Math.round(Number(peso) / (Number(altura) * Number(altura)));
+    var imc =  (Number(peso) / (Number(altura) * Number(altura))).toFixed(2);
+    console.log(imc);
     return imc || 0;  
 }
 
@@ -51,12 +80,12 @@ function imprimeResultado(){
     resultado.innerHTML = turnResultNumberIntoMeans();
     
 }
-
-async function preventSubmit(e){
+ 
+ button.addEventListener("click", async function(e){
     e.preventDefault();
     
     await getInputValues(inputs);
     await validateData();
     imprimeResultado();
-}
+});
 
