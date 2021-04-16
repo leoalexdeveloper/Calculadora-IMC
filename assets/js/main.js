@@ -16,9 +16,10 @@ for(let i = 0; i < inputs.length; i++){
             inputs[i].value[inputs[i].value.length-1].match(/\d/))
         {
             let strSplit = inputs[i].value.replace(".", "").split("");
-            strSplit.splice(-2, 0, ".");
+                strSplit.splice(-2, 0, ".");
+
             let joined = strSplit.join("");
-            inputs[i].value = joined;
+                inputs[i].value = joined;
         }else{
             inputs[i].value = inputs[i].value.substr(0, inputs[i].value.length-1);
         }
@@ -53,19 +54,19 @@ function turnResultNumberIntoMeans(){
         case altura < 0.1 || altura == "":
             return "Insira algum altura";
         break;
-        case calculaImc(peso, altura) < 18.5:
+        case calculaImc(peso, altura) <= 18.5:
             return "Abaixo do peso";
         break;
-        case calculaImc(peso, altura) < 24.9:
+        case calculaImc(peso, altura) <= 24.9:
             return "Peso normal";
         break;
-        case calculaImc(peso, altura) < 29.9:
+        case calculaImc(peso, altura) <= 29.9:
             return "Sobrepeso";
         break;
-        case calculaImc(peso, altura) < 34.9:
+        case calculaImc(peso, altura) <= 34.9:
             return "Obesidade grau 1";
         break;
-        case calculaImc(peso, altura) < 39.9:
+        case calculaImc(peso, altura) <= 39.9:
             return "Obesidade grau 2";
         break;
         case calculaImc(peso, altura) > 40:
