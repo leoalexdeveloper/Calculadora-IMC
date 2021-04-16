@@ -40,6 +40,10 @@ form input:focus{
     outline: 1px solid var(--primary-color);
 }
 
+form input::placeholder{
+    color:grey;
+}
+
 form button{
     border: none;
     background: var(--primary-color);
@@ -61,18 +65,18 @@ form button:active{
 
 table{
     font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #dedede;
     text-align: center;
     padding: 8px;
   }
   
   tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #dedede;
   }
 
   .resultado{
