@@ -18,7 +18,6 @@ for(let i = 0; i < inputs.length; i++){
             let strSplit = inputs[i].value.replace(".", "").split("");
             strSplit.splice(-2, 0, ".");
             let joined = strSplit.join("");
-            console.log(joined);
             inputs[i].value = joined;
         }else{
             inputs[i].value = inputs[i].value.substr(0, inputs[i].value.length-1);
@@ -43,7 +42,6 @@ function validateData(){
 
 function calculaImc(peso, altura){
     var imc =  (Number(peso) / (Number(altura) * Number(altura))).toFixed(2);
-    console.log(imc);
     return imc || 0;  
 }
 
